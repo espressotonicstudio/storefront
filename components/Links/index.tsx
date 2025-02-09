@@ -39,6 +39,7 @@ const Thumbnail = ({
   if (image) {
     return (
       <Image
+        priority
         src={image}
         alt={alt}
         width={mapSizeToWidth[size]}
