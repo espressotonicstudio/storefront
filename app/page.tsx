@@ -6,8 +6,8 @@ import { Social } from "@/components/Socials";
 
 export default async function Home() {
   return (
-    <div className="min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="max-w-md mx-auto space-y-16">
+    <div className="min-h-screen px-4 py-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <main className="max-w-md mx-auto space-y-12 sm:space-y-16">
         <Profile
           src="https://github.com/shadcn.png"
           name="@espressotonicstudio"

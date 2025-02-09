@@ -43,7 +43,10 @@ const Thumbnail = ({
         alt={alt}
         width={mapSizeToWidth[size]}
         height={mapSizeToWidth[size]}
-        className={cn("rounded-full", size === "md" && "rounded-xl")}
+        className={cn(
+          "rounded-full object-contain",
+          size === "md" && "rounded-xl"
+        )}
       />
     );
   }
@@ -99,14 +102,16 @@ const MediumLinkCard = ({
       target={newTab ? "_blank" : "_self"}
     >
       {/* animate-shimmer bg-[linear-gradient(110deg,#ffffff,45%,#f0f0f0,55%,#ffffff)] dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%]  */}
-      <Card className="p-3 rounded-2xl w-full relative flex items-stretch gap-3">
-        <Thumbnail
-          image={thumbnailImage}
-          emoji={thumbnailEmoji}
-          alt={title}
-          size="md"
-        />
-        <div className="flex flex-col w-full mr-auto text-sm gap-2">
+      <Card className="p-3 rounded-2xl w-full relative flex flex-wrap items-stretch gap-3">
+        <div>
+          <Thumbnail
+            image={thumbnailImage}
+            emoji={thumbnailEmoji}
+            alt={title}
+            size="md"
+          />
+        </div>
+        <div className="flex flex-col flex-1 w-full mr-auto text-sm gap-2">
           <p className="font-bold">{title}</p>
           <p className="text-sm text-gray-500">{description}</p>
           <Button
