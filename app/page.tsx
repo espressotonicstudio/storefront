@@ -2,6 +2,7 @@
 
 import { Link } from "@/components/Links";
 import { Profile } from "@/components/Profile";
+import { Social } from "@/components/Socials";
 
 export default async function Home() {
   return (
@@ -31,6 +32,20 @@ export default async function Home() {
             title="Want to build your own app?"
             description="We're a lovely team of two! We teach you how to create your own apps on the web."
             thumbnailImage="https://github.com/shadcn.png"
+          />
+        </section>
+        <section className="flex gap-4 mx-auto justify-center">
+          <Social
+            url="https://x.com/espressotonicstudio"
+            brand="x"
+          />
+          <Social
+            url="https://youtube.com/@espressotonicstudio"
+            brand="youtube"
+          />
+          <Social
+            url="https://tiktok.com/@espressotonicstudio"
+            brand="tiktok"
           />
         </section>
       </main>
