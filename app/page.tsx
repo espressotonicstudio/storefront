@@ -47,14 +47,14 @@ export default async function Home() {
           size="sm"
           url="https://buy.polar.sh/polar_cl_6fyV7yILyAAKa9tLkMDHBBL2AGSxq8KaRVkjb3K2G1O"
           title="Want to build your own app? Book a free consultation with Espresso Tonic Studio"
-          thumbnailImage="/logo.png"
+          thumbnailImage="/avatar.png"
         />
         <Link
           size="md"
           url="https://buy.polar.sh/polar_cl_6fyV7yILyAAKa9tLkMDHBBL2AGSxq8KaRVkjb3K2G1O"
           title="Want to build your own app?"
           description="We're a lovely team of two! We teach you how to create your own apps on the web."
-          thumbnailImage="/logo.png"
+          thumbnailImage="/avatar.png"
         />
       </section>
       <section
