@@ -1,6 +1,7 @@
 "use server";
 
 import { Link } from "@/components/Links";
+import { OneClickDeploy } from "@/components/OneClickDeploy";
 import { Profile } from "@/components/Profile";
 import { Social } from "@/components/Socials";
 
@@ -11,7 +12,7 @@ export default async function Home() {
         <Profile
           src="https://github.com/shadcn.png"
           name="@espressotonicstudio"
-          description="We're a lovely team of two! We teach you how to create your own apps on the web."
+          description="We're a development studio and we teach you how to build your own apps on the web."
         />
         <section
           id="links"
@@ -54,6 +55,7 @@ export default async function Home() {
             brand="tiktok"
           />
         </section>
+        <OneClickDeploy />
       </main>
     </div>
   );
