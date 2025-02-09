@@ -1,6 +1,5 @@
 import { Container } from "@/components/Container";
 import { Link } from "@/components/Links";
-import { OneClickDeploy } from "@/components/OneClickDeploy";
 import { Profile } from "@/components/Profile";
 import { Social } from "@/components/Socials";
 import { Metadata } from "next";
@@ -75,7 +74,6 @@ export default async function Home() {
           brand="tiktok"
         />
       </section>
-      <OneClickDeploy />
     </Container>
   );
 }
