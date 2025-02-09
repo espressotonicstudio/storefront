@@ -3,7 +3,7 @@ import Image from "next/image";
 // https://cdn.simpleicons.org/[ICON SLUG]/[COLOR]/[DARK_MODE_COLOR]
 const cdnLink = `https://cdn.simpleicons.org`;
 
-const Brand = {
+const DefaultBrands = {
   instagram: `instagram`,
   x: `x`,
   github: `github`,
@@ -12,12 +12,12 @@ const Brand = {
 };
 
 const createBrandLink = (
-  brand: keyof typeof Brand | (string & {}),
+  brand: keyof typeof DefaultBrands | (string & {}),
   color: string,
   darkColor: string
 ) => {
   return `${`${cdnLink}/${
-    Brand[brand as keyof typeof Brand] || brand
+    DefaultBrands[brand as keyof typeof DefaultBrands] || brand
   }`}/${color}/${darkColor}`;
 };
 
@@ -29,7 +29,7 @@ export const Social = ({
   size = "sm",
 }: {
   url: string;
-  brand: keyof typeof Brand | (string & {});
+  brand: keyof typeof DefaultBrands | (string & {});
   color?: string;
   darkColor?: string;
   size?: "sm" | "md";

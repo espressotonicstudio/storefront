@@ -1,5 +1,6 @@
 "use server";
 
+import { DefaultStyleProps } from "@/lib/styles";
 /**
  * Displays the profile header with the user's name, email, and profile picture
  */
@@ -26,22 +27,29 @@ const ProfilePicture = ({ src, fallback }: ProfilePictureProps) => {
 type ProfileProps = {
   name: string;
   description: string;
-} & ProfilePictureProps;
+} & ProfilePictureProps &
+  DefaultStyleProps;
 
 export const Profile = async ({
   src,
   fallback = "",
   name,
   description,
+  fontColour,
 }: ProfileProps) => {
   return (
-    <section className="flex flex-col items-center gap-2">
+    <section
+      className="flex flex-col items-center text-center gap-2 max-w-[280px] mx-auto"
+      style={{
+        color: fontColour,
+      }}
+    >
       <ProfilePicture
         src={src}
         fallback={fallback}
       />
       <p className="font-semibold">{name}</p>
-      <p className="text-sm text-gray-500">{description}</p>
+      <p className="text-sm">{description}</p>
     </section>
   );
 };

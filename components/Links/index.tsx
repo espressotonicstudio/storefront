@@ -6,17 +6,18 @@ import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { getShapeStyles, Shapes } from "@/lib/styles";
+import {
+  CardProps,
+  MediumCardProps,
+  SizeVariants,
+  SmallCardProps,
+} from "./types";
 
-type SizeVariants = "sm" | "md" | "lg";
-
-type CardProps = {
-  size: SizeVariants;
-  url: string;
-  thumbnailImage?: string;
-  thumbnailEmoji?: string;
-  title: string;
-  description?: string;
-  newTab?: boolean;
+const mapSizeToWidth = {
+  sm: 40,
+  md: 140,
+  lg: 100,
 };
 
 const Thumbnail = ({
@@ -24,18 +25,14 @@ const Thumbnail = ({
   alt,
   emoji,
   size,
+  shape,
 }: {
   image?: string;
   alt: string;
   emoji?: string;
   size: SizeVariants;
+  shape?: Shapes;
 }) => {
-  const mapSizeToWidth = {
-    sm: 40,
-    md: 140,
-    lg: 100,
-  };
-
   if (image) {
     return (
       <div>
@@ -45,10 +42,7 @@ const Thumbnail = ({
           alt={alt}
           width={mapSizeToWidth[size]}
           height={mapSizeToWidth[size]}
-          className={cn(
-            "rounded-full aspect-square",
-            size === "md" && "rounded-xl"
-          )}
+          className={cn("aspect-square", getShapeStyles(shape))}
         />
       </div>
     );
@@ -56,7 +50,12 @@ const Thumbnail = ({
 
   if (emoji) {
     return (
-      <span className="size-10 text-3xl content-center rounded-full aspect-square">
+      <span
+        className={cn(
+          "size-10 text-3xl content-center aspect-square",
+          getShapeStyles(shape)
+        )}
+      >
         {emoji}
       </span>
     );
@@ -71,18 +70,28 @@ const SmallLinkCard = ({
   thumbnailImage,
   thumbnailEmoji,
   newTab = false,
-}: Omit<CardProps, "size">) => {
+  fontColour,
+  shape = "circle",
+}: SmallCardProps) => {
   return (
     <a
       href={url}
       target={newTab ? "_blank" : "_self"}
+      style={{
+        color: fontColour,
+      }}
     >
-      {/* animate-shimmer bg-[linear-gradient(110deg,#ffffff,45%,#f0f0f0,55%,#ffffff)] dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%]  */}
-      <Card className="p-2 rounded-full h-auto w-full relative text-center flex items-center gap-2">
+      <Card
+        className={cn(
+          "shadow-none border-none p-2 min-h-14 rounded-full h-auto w-full relative text-center flex items-center gap-4 text-inherit",
+          getShapeStyles(shape)
+        )}
+      >
         <Thumbnail
           image={thumbnailImage}
           emoji={thumbnailEmoji}
           alt={title}
+          shape={shape}
           size="sm"
         />
         <div
@@ -103,42 +112,63 @@ const MediumLinkCard = ({
   thumbnailImage,
   thumbnailEmoji,
   description,
+  fontColour,
   newTab = false,
-}: Omit<CardProps, "size">) => {
+  shape = "rounded",
+  buttonText = "Purchase",
+}: MediumCardProps) => {
   return (
-    <a
-      href={url}
-      target={newTab ? "_blank" : "_self"}
+    <Card
+      className={cn(
+        "shadow-none border-none p-3 rounded-2xl w-full relative flex flex-wrap items-stretch gap-4 text-inherit",
+        getShapeStyles(shape)
+      )}
+      style={{
+        color: fontColour,
+      }}
     >
-      {/* animate-shimmer bg-[linear-gradient(110deg,#ffffff,45%,#f0f0f0,55%,#ffffff)] dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%]  */}
-      <Card className="p-3 rounded-2xl w-full relative flex flex-wrap items-stretch gap-3">
-        <Thumbnail
-          image={thumbnailImage}
-          emoji={thumbnailEmoji}
-          alt={title}
-          size="md"
-        />
-        <div className="flex flex-col flex-1 w-full mr-auto text-sm gap-2">
-          <p className="font-bold">{title}</p>
-          <p className="text-sm text-gray-500">{description}</p>
+      <Thumbnail
+        image={thumbnailImage}
+        emoji={thumbnailEmoji}
+        alt={title}
+        size="md"
+        shape={shape}
+      />
+      <div className="flex flex-col flex-1 w-full mr-auto text-sm gap-2">
+        <p className="font-bold">{title}</p>
+        <p className="text-sm">{description}</p>
+        <a
+          className="mt-auto"
+          href={url}
+          target={newTab ? "_blank" : "_self"}
+        >
           <Button
             variant="outline"
-            className="w-full mt-auto"
+            className="w-full"
           >
-            Purchase
+            {buttonText}
           </Button>
-        </div>
-      </Card>
-    </a>
+        </a>
+      </div>
+    </Card>
   );
 };
 
-export const Link = ({ size = "sm", ...props }: CardProps) => {
-  if (size === "sm") {
+// Type guards to narrow the props
+function isSmallCardProps(props: CardProps): props is SmallCardProps {
+  return props.size === "sm";
+}
+
+function isMediumCardProps(props: CardProps): props is MediumCardProps {
+  return props.size === "md";
+}
+
+export const Link = (props: CardProps) => {
+  if (isSmallCardProps(props)) {
     return <SmallLinkCard {...props} />;
   }
 
-  if (size === "md") {
+  if (isMediumCardProps(props)) {
     return <MediumLinkCard {...props} />;
   }
 

@@ -22,7 +22,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 export default async function Home() {
   return (
-    <Container>
+    <Container
+      fontColour="blue"
+      backgroundImage="/background.webp"
+    >
       <Profile
         src="/avatar.png"
         name="@espressotonicstudio"
@@ -34,27 +37,35 @@ export default async function Home() {
       >
         <Link
           size="sm"
+          fontColour="black"
           url="https://github.com/espressotonicstudio"
           title="Github"
+          shape="rounded"
         />
         <Link
           size="sm"
+          fontColour="black"
           url="https://github.com/espressotonicstudio"
           title="FIRE Podcast 🎧 🔥"
           thumbnailEmoji="🎧"
+          shape="rounded"
         />
         <Link
           size="sm"
+          fontColour="black"
           url="https://buy.polar.sh/polar_cl_6fyV7yILyAAKa9tLkMDHBBL2AGSxq8KaRVkjb3K2G1O"
           title="Want to build your own app? Book a free consultation with Espresso Tonic Studio"
           thumbnailImage="/avatar.png"
+          shape="rounded"
         />
         <Link
           size="md"
+          fontColour="black"
           url="https://buy.polar.sh/polar_cl_6fyV7yILyAAKa9tLkMDHBBL2AGSxq8KaRVkjb3K2G1O"
           title="Want to build your own app?"
           description="We're a lovely team of two! We teach you how to create your own apps on the web."
           thumbnailImage="/avatar.png"
+          buttonText="Book a free consultation"
         />
       </section>
       <section
@@ -64,14 +75,17 @@ export default async function Home() {
         <Social
           url="https://x.com/espressotonicstudio"
           brand="x"
+          color="blue"
         />
         <Social
           url="https://youtube.com/@espressotonicstudio"
           brand="youtube"
+          color="blue"
         />
         <Social
           url="https://tiktok.com/@espressotonicstudio"
           brand="tiktok"
+          color="blue"
         />
       </section>
     </Container>
