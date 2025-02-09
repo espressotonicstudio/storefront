@@ -1,3 +1,5 @@
+"use server";
+
 /**
  * Displays the profile header with the user's name, email, and profile picture
  */
@@ -12,7 +14,10 @@ type ProfilePictureProps = {
 const ProfilePicture = ({ src, fallback }: ProfilePictureProps) => {
   return (
     <Avatar className="size-24">
-      <AvatarImage src={src} />
+      <AvatarImage
+        src={src}
+        fetchPriority="high"
+      />
       <AvatarFallback>{fallback}</AvatarFallback>
     </Avatar>
   );
@@ -23,7 +28,7 @@ type ProfileProps = {
   description: string;
 } & ProfilePictureProps;
 
-export const Profile = ({
+export const Profile = async ({
   src,
   fallback = "",
   name,
