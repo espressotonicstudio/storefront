@@ -38,23 +38,25 @@ const Thumbnail = ({
 
   if (image) {
     return (
-      <Image
-        priority
-        src={image}
-        alt={alt}
-        width={mapSizeToWidth[size]}
-        height={mapSizeToWidth[size]}
-        className={cn(
-          "rounded-full object-contain",
-          size === "md" && "rounded-xl"
-        )}
-      />
+      <div>
+        <Image
+          priority
+          src={image}
+          alt={alt}
+          width={mapSizeToWidth[size]}
+          height={mapSizeToWidth[size]}
+          className={cn(
+            "rounded-full aspect-square",
+            size === "md" && "rounded-xl"
+          )}
+        />
+      </div>
     );
   }
 
   if (emoji) {
     return (
-      <span className="size-10 text-3xl content-center rounded-full">
+      <span className="size-10 text-3xl content-center rounded-full aspect-square">
         {emoji}
       </span>
     );
@@ -83,7 +85,13 @@ const SmallLinkCard = ({
           alt={title}
           size="sm"
         />
-        <div className={cn("w-full mr-auto text-sm pr-10")}>{title}</div>
+        <div
+          className={cn("w-full mr-auto text-sm", {
+            "pr-10": thumbnailEmoji || thumbnailImage,
+          })}
+        >
+          {title}
+        </div>
       </Card>
     </a>
   );
@@ -104,14 +112,12 @@ const MediumLinkCard = ({
     >
       {/* animate-shimmer bg-[linear-gradient(110deg,#ffffff,45%,#f0f0f0,55%,#ffffff)] dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%]  */}
       <Card className="p-3 rounded-2xl w-full relative flex flex-wrap items-stretch gap-3">
-        <div>
-          <Thumbnail
-            image={thumbnailImage}
-            emoji={thumbnailEmoji}
-            alt={title}
-            size="md"
-          />
-        </div>
+        <Thumbnail
+          image={thumbnailImage}
+          emoji={thumbnailEmoji}
+          alt={title}
+          size="md"
+        />
         <div className="flex flex-col flex-1 w-full mr-auto text-sm gap-2">
           <p className="font-bold">{title}</p>
           <p className="text-sm text-gray-500">{description}</p>
