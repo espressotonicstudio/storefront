@@ -13,7 +13,10 @@ export default async function Home() {
           name="@espressotonicstudio"
           description="We're a lovely team of two! We teach you how to create your own apps on the web."
         />
-        <section className="flex flex-col gap-4">
+        <section
+          id="links"
+          className="flex flex-col gap-4"
+        >
           <Link
             size="sm"
             url="https://github.com/espressotonicstudio"
@@ -34,7 +37,10 @@ export default async function Home() {
             thumbnailImage="https://github.com/shadcn.png"
           />
         </section>
-        <section className="flex gap-4 mx-auto justify-center">
+        <section
+          id="socials"
+          className="flex gap-4 mx-auto justify-center"
+        >
           <Social
             url="https://x.com/espressotonicstudio"
             brand="x"
