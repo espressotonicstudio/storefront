@@ -1,4 +1,4 @@
-export type Shapes = "circle" | "square" | "rounded" | "sharp";
+export type Shapes = "circle" | "rounded" | "sharp";
 
 export type DefaultStyleProps = {
   fontColour?: string;
