@@ -68,10 +68,20 @@ export default async function Home() {
         />
         <Link
           size="sm"
+          fontColour="black"
+          url="https://github.com/espressotonicstudio"
+          title="Retro 🕺"
+          theme="retro"
+          shape="rounded"
+          themeColor="blue"
+        />
+        <Link
+          size="sm"
           fontColour="#f4f6fc"
           url="https://github.com/espressotonicstudio"
           title="FIRE Podcast 🎧 🔥"
           thumbnailEmoji="🎧"
+          shape="sharp"
           theme="glass"
         />
         <Link

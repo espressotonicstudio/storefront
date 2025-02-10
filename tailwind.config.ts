@@ -75,5 +75,10 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
-  safelist: ["bg-white/10", "backdrop-blur-md"],
+  safelist: [
+    "bg-white/10",
+    "backdrop-blur-md",
+    "hover:translate-x-0.5",
+    "hover:translate-y-0.5",
+  ],
 } satisfies Config;

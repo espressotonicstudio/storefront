@@ -21,7 +21,7 @@ export const getShapeStyles = (shape?: Shapes) => {
         circle: "rounded-full",
         rounded: "rounded-md",
         sharp: "rounded-none",
-      },
+      } satisfies Record<Shapes, string>,
     },
   })({ shape });
 };
@@ -40,9 +40,9 @@ export const themeVariants = tv({
     theme: {
       solid: "border-none",
       outline: `bg-transparent border`,
-      retro: "",
+      retro: "hover:translate-x-0.5 hover:translate-y-0.5",
       glass: "border-none bg-white/10 backdrop-blur-md",
-    },
+    } satisfies Record<Themes, string>,
   },
 });
 
@@ -55,6 +55,10 @@ export const getDynamicThemeStyles = (
     case "outline":
       return {
         borderColor: `rgb(from ${color} r g b)`,
+      };
+    case "retro":
+      return {
+        filter: `drop-shadow(6px 6px ${color})`,
       };
     default:
       return {};
