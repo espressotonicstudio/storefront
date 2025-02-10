@@ -23,8 +23,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
 export default async function Home() {
   return (
     <Container
-      fontColour="blue"
-      backgroundImage="/background.webp"
+      fontColour="#f4f6fc"
+      backgroundImage="/background2.png"
     >
       <Profile
         src="/avatar.png"
@@ -40,7 +40,6 @@ export default async function Home() {
           fontColour="black"
           url="https://github.com/espressotonicstudio"
           title="Github"
-          shape="rounded"
         />
         <Link
           size="sm"
@@ -48,7 +47,6 @@ export default async function Home() {
           url="https://github.com/espressotonicstudio"
           title="FIRE Podcast 🎧 🔥"
           thumbnailEmoji="🎧"
-          shape="rounded"
         />
         <Link
           size="sm"
@@ -56,7 +54,6 @@ export default async function Home() {
           url="https://buy.polar.sh/polar_cl_6fyV7yILyAAKa9tLkMDHBBL2AGSxq8KaRVkjb3K2G1O"
           title="Want to build your own app? Book a free consultation with Espresso Tonic Studio"
           thumbnailImage="/avatar.png"
-          shape="rounded"
         />
         <Link
           size="md"
@@ -75,17 +72,22 @@ export default async function Home() {
         <Social
           url="https://x.com/espressotonicstudio"
           brand="x"
-          color="blue"
+          color="f4f6fc"
         />
         <Social
           url="https://youtube.com/@espressotonicstudio"
           brand="youtube"
-          color="blue"
+          color="f4f6fc"
+        />
+        <Social
+          url="https://youtube.com/@espressotonicstudio"
+          brand="instagram"
+          color="f4f6fc"
         />
         <Social
           url="https://tiktok.com/@espressotonicstudio"
           brand="tiktok"
-          color="blue"
+          color="f4f6fc"
         />
       </section>
     </Container>

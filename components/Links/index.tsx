@@ -4,9 +4,9 @@
  */
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
+// import Image from "next/image";
 import { Button } from "../ui/button";
-import { getShapeStyles, Shapes } from "@/lib/styles";
+import { getShapeStyles, getThemeStyles, Shapes } from "@/lib/styles";
 import {
   CardProps,
   MediumCardProps,
@@ -36,13 +36,16 @@ const Thumbnail = ({
   if (image) {
     return (
       <div>
-        <Image
-          priority
+        <img
+          // priority
           src={image}
           alt={alt}
           width={mapSizeToWidth[size]}
           height={mapSizeToWidth[size]}
-          className={cn("aspect-square", getShapeStyles(shape))}
+          className={cn(
+            "aspect-square min-w-10 min-h-10",
+            getShapeStyles(shape)
+          )}
         />
       </div>
     );
@@ -72,6 +75,7 @@ const SmallLinkCard = ({
   newTab = false,
   fontColour,
   shape = "circle",
+  theme = "solid",
 }: SmallCardProps) => {
   return (
     <a
@@ -84,7 +88,8 @@ const SmallLinkCard = ({
       <Card
         className={cn(
           "shadow-none border-none p-2 min-h-14 rounded-full h-auto w-full relative text-center flex items-center gap-4 text-inherit",
-          getShapeStyles(shape)
+          getShapeStyles(shape),
+          getThemeStyles(theme)
         )}
       >
         <Thumbnail
@@ -144,7 +149,7 @@ const MediumLinkCard = ({
         >
           <Button
             variant="outline"
-            className="w-full"
+            className="w-full whitespace-normal h-auto"
           >
             {buttonText}
           </Button>
