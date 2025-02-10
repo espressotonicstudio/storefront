@@ -1,26 +1,30 @@
-// import { tv } from "tailwind-variants";
+import { tv } from "tailwind-variants";
 
 export type Shapes = "circle" | "rounded" | "sharp";
 export type Themes = "solid" | "outline" | "retro" | "glass";
+export type Shadows = "none" | "soft" | "hard" | "none";
 
 export type DefaultStyleProps = {
   fontColour?: string;
   backgroundColor?: string;
   shape?: Shapes;
   theme?: Themes;
+  themeColor?: string;
 };
 
 export const getShapeStyles = (shape?: Shapes) => {
   if (!shape) return "";
 
-  return {
-    "rounded-full": shape === "circle",
-    "rounded-md": shape === "rounded",
-    "rounded-none": shape === "sharp",
-  };
+  return tv({
+    variants: {
+      shape: {
+        circle: "rounded-full",
+        rounded: "rounded-md",
+        sharp: "rounded-none",
+      },
+    },
+  })({ shape });
 };
-
-export type Shadows = "none" | "soft" | "hard" | "none";
 
 export const getShadowStyles = (shadow?: Shadows, color?: string) => {
   if (!shadow) return "";
@@ -30,17 +34,29 @@ export const getShadowStyles = (shadow?: Shadows, color?: string) => {
   };
 };
 
-export const getThemeStyles = (theme?: Themes) => {
+export const themeVariants = tv({
+  base: "shadow-none",
+  variants: {
+    theme: {
+      solid: "border-none",
+      outline: `bg-transparent border`,
+      retro: "",
+      glass: "border-none bg-white/10 backdrop-blur-md",
+    },
+  },
+});
+
+// We need this as inline styles because tw can't generate the dynamic rgb values at runtime
+export const getDynamicThemeStyles = (
+  theme?: Themes,
+  color: string = "black"
+) => {
   switch (theme) {
-    case "solid":
-      return "";
     case "outline":
-      return "bg-transparent";
-    case "retro":
-      return ``;
-    case "glass":
-      return "bg-transparent backdrop-blur-sm";
+      return {
+        borderColor: `rgb(from ${color} r g b)`,
+      };
     default:
-      return "";
+      return {};
   }
 };

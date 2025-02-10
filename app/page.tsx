@@ -32,40 +32,6 @@ export default async function Home() {
         description="We're a development studio and we teach you how to build your own apps on the web."
       />
       <section
-        id="links"
-        className="flex flex-col gap-4"
-      >
-        <Link
-          size="sm"
-          fontColour="black"
-          url="https://github.com/espressotonicstudio"
-          title="Github"
-        />
-        <Link
-          size="sm"
-          fontColour="black"
-          url="https://github.com/espressotonicstudio"
-          title="FIRE Podcast 🎧 🔥"
-          thumbnailEmoji="🎧"
-        />
-        <Link
-          size="sm"
-          fontColour="black"
-          url="https://buy.polar.sh/polar_cl_6fyV7yILyAAKa9tLkMDHBBL2AGSxq8KaRVkjb3K2G1O"
-          title="Want to build your own app? Book a free consultation with Espresso Tonic Studio"
-          thumbnailImage="/avatar.png"
-        />
-        <Link
-          size="md"
-          fontColour="black"
-          url="https://buy.polar.sh/polar_cl_6fyV7yILyAAKa9tLkMDHBBL2AGSxq8KaRVkjb3K2G1O"
-          title="Want to build your own app?"
-          description="We're a lovely team of two! We teach you how to create your own apps on the web."
-          thumbnailImage="/avatar.png"
-          buttonText="Book a free consultation"
-        />
-      </section>
-      <section
         id="socials"
         className="flex gap-4 mx-auto justify-center"
       >
@@ -89,6 +55,48 @@ export default async function Home() {
           brand="tiktok"
           color="f4f6fc"
         />
+      </section>
+      <section
+        id="links"
+        className="flex flex-col gap-4"
+      >
+        <Link
+          size="sm"
+          fontColour="black"
+          url="https://github.com/espressotonicstudio"
+          title="Github"
+        />
+        <Link
+          size="sm"
+          fontColour="#f4f6fc"
+          url="https://github.com/espressotonicstudio"
+          title="FIRE Podcast 🎧 🔥"
+          thumbnailEmoji="🎧"
+          theme="glass"
+        />
+        <Link
+          size="sm"
+          fontColour="#f4f6fc"
+          url="https://buy.polar.sh/polar_cl_6fyV7yILyAAKa9tLkMDHBBL2AGSxq8KaRVkjb3K2G1O"
+          title="Want to build your own app? Book a free consultation with Espresso Tonic Studio"
+          thumbnailImage="/avatar.png"
+          theme="outline"
+        />
+        <Link
+          size="md"
+          fontColour="black"
+          url="https://buy.polar.sh/polar_cl_6fyV7yILyAAKa9tLkMDHBBL2AGSxq8KaRVkjb3K2G1O"
+          title="Want to build your own app?"
+          description="We're a lovely team of two! We teach you how to create your own apps on the web."
+          thumbnailImage="/avatar.png"
+          buttonText="Book a free consultation"
+        />
+        <a
+          href="https://espressotonic.studio"
+          className="text-center text-xs"
+        >
+          <i>© {new Date().getFullYear()} Espresso Tonic Studio</i>
+        </a>
       </section>
     </Container>
   );

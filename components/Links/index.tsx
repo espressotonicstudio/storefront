@@ -4,9 +4,13 @@
  */
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-// import Image from "next/image";
 import { Button } from "../ui/button";
-import { getShapeStyles, getThemeStyles, Shapes } from "@/lib/styles";
+import {
+  getDynamicThemeStyles,
+  getShapeStyles,
+  themeVariants,
+  Shapes,
+} from "@/lib/styles";
 import {
   CardProps,
   MediumCardProps,
@@ -37,7 +41,6 @@ const Thumbnail = ({
     return (
       <div>
         <img
-          // priority
           src={image}
           alt={alt}
           width={mapSizeToWidth[size]}
@@ -76,6 +79,7 @@ const SmallLinkCard = ({
   fontColour,
   shape = "circle",
   theme = "solid",
+  themeColor = fontColour,
 }: SmallCardProps) => {
   return (
     <a
@@ -87,10 +91,13 @@ const SmallLinkCard = ({
     >
       <Card
         className={cn(
-          "shadow-none border-none p-2 min-h-14 rounded-full h-auto w-full relative text-center flex items-center gap-4 text-inherit",
+          "p-2 min-h-14 rounded-full h-auto w-full relative text-center flex items-center gap-4 text-inherit",
           getShapeStyles(shape),
-          getThemeStyles(theme)
+          themeVariants({ theme })
         )}
+        style={{
+          ...getDynamicThemeStyles(theme, themeColor),
+        }}
       >
         <Thumbnail
           image={thumbnailImage}
@@ -121,15 +128,19 @@ const MediumLinkCard = ({
   newTab = false,
   shape = "rounded",
   buttonText = "Purchase",
+  theme = "solid",
+  themeColor = fontColour,
 }: MediumCardProps) => {
   return (
     <Card
       className={cn(
-        "shadow-none border-none p-3 rounded-2xl w-full relative flex flex-wrap items-stretch gap-4 text-inherit",
-        getShapeStyles(shape)
+        "p-3 rounded-2xl w-full relative flex flex-wrap items-stretch gap-4 text-inherit",
+        getShapeStyles(shape),
+        themeVariants({ theme })
       )}
       style={{
         color: fontColour,
+        ...getDynamicThemeStyles(theme, themeColor),
       }}
     >
       <Thumbnail
@@ -143,7 +154,7 @@ const MediumLinkCard = ({
         <p className="font-bold">{title}</p>
         <p className="text-sm">{description}</p>
         <a
-          className="mt-auto"
+          className="mt-auto hidden xs:block"
           href={url}
           target={newTab ? "_blank" : "_self"}
         >
@@ -155,6 +166,18 @@ const MediumLinkCard = ({
           </Button>
         </a>
       </div>
+      <a
+        className="w-full mt-auto block xs:hidden"
+        href={url}
+        target={newTab ? "_blank" : "_self"}
+      >
+        <Button
+          variant="outline"
+          className="w-full whitespace-normal h-auto"
+        >
+          {buttonText}
+        </Button>
+      </a>
     </Card>
   );
 };

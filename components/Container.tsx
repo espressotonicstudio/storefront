@@ -15,7 +15,7 @@ export const Container = async ({
   return (
     <div
       className={cn(
-        "min-h-screen px-4 py-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)]",
+        "min-h-screen px-4 py-8 sm:p-20 font-[family-name:var(--font-geist-sans)]",
         !!backgroundImage && "bg-cover bg-center"
       )}
       style={{

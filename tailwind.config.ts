@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "425px",
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -72,4 +75,5 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate")],
+  safelist: ["bg-white/10", "backdrop-blur-md"],
 } satisfies Config;
