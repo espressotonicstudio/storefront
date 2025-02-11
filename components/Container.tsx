@@ -1,3 +1,5 @@
+"use server";
+
 import { DefaultStyleProps } from "@/lib/styles";
 import { cn } from "@/lib/utils";
 
