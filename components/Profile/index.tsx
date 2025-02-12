@@ -53,7 +53,7 @@ export const Profile = async ({
         fallback={fallback}
         shape={shape}
       />
-      <p className="font-semibold">{name}</p>
+      <p className={cn(`font-semibold`)}>{name}</p>
       <p className="text-sm">{description}</p>
     </section>
   );
