@@ -80,6 +80,7 @@ const SmallLinkCard = ({
   shape = "circle",
   theme = "solid",
   themeColor = fontColour,
+  priority = false,
 }: SmallCardProps) => {
   return (
     <a
@@ -93,7 +94,8 @@ const SmallLinkCard = ({
         className={cn(
           "p-2 min-h-14 rounded-full h-auto w-full relative text-center flex items-center gap-4 text-inherit",
           getShapeStyles(shape),
-          themeVariants({ theme })
+          themeVariants({ theme }),
+          { "animate-horizontal-vibration": priority }
         )}
         style={{
           ...getDynamicThemeStyles(theme, themeColor),

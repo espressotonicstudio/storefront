@@ -7,6 +7,7 @@ type BaseCardProps = {
   url: string;
   title: string;
   newTab?: boolean;
+  priority?: boolean;
 } & DefaultStyleProps;
 
 // Small card specific props

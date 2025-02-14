@@ -61,6 +61,7 @@ export default {
       },
       animation: {
         shimmer: "shimmer 2s linear infinite",
+        "horizontal-vibration": "horizontal-vibration 2s linear infinite",
       },
       keyframes: {
         shimmer: {
@@ -70,6 +71,14 @@ export default {
           to: {
             backgroundPosition: "-200% 0",
           },
+        },
+        "horizontal-vibration": {
+          "0%": { transform: "translateX(0)" },
+          "5%": { transform: "translateX(3px) rotate(0.5deg)" },
+          "10%": { transform: "translateX(-3px) rotate(-0.5deg)" },
+          "15%": { transform: "translateX(3px) rotate(0.5deg)" },
+          "20%": { transform: "translateX(0) rotate(0deg)" },
+          "100%": { transform: "translateX(0) rotate(0deg)" },
         },
       },
     },
