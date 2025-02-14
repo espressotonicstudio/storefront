@@ -28,6 +28,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      className="bg-black"
       suppressHydrationWarning
     >
       <body
