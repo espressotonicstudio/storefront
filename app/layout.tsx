@@ -1,4 +1,5 @@
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
@@ -26,30 +27,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className="bg-black"
-      suppressHydrationWarning
-    >
-      <body
-        className={cn(
-          geistSans.variable,
-          geistMono.variable,
-          playfairDisplay.variable,
-          "antialiased"
-        )}
+    <ClerkProvider>
+      <html
+        lang="en"
+        className="h-full"
+        suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange
+        <body
+          className={cn(
+            geistSans.variable,
+            geistMono.variable,
+            playfairDisplay.variable,
+            "antialiased h-full"
+          )}
         >
-          {children}
-        </ThemeProvider>
-        <SpeedInsights />
-        <Analytics />
-      </body>
-    </html>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="light"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+          <SpeedInsights />
+          <Analytics />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
